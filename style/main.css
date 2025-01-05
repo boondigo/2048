@@ -533,6 +533,50 @@ hr {
 .game-explanation {
   margin-top: 50px; }
 
+#checkbox-container {
+  display: none; /* Hide by default */
+}
+
+#virtual-keyboard {
+  display: none;
+}
+
+@media screen and (max-width: 520px) {
+  #virtual-keyboard {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000; /* Ensure the virtual keyboard is on top */
+  }
+}
+
+#virtual-keyboard .row {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow-key {
+  width: 100px; /* Increase width */
+  height: 100px; /* Increase height */
+  font-size: 28px; /* Increase font size */
+  text-align: center;
+  line-height: 70px; /* Match height */
+  background-color: rgba(204, 204, 204, 0.8); /* Add transparency */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.arrow-key:active {
+  background-color: rgba(170, 170, 170, 0.8); /* Add transparency */
+}
+
 @media screen and (max-width: 520px) {
   html, body {
     font-size: 15px; }

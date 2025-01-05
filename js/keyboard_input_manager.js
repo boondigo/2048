@@ -72,6 +72,10 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".retry-button", this.restart);
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
+  this.bindButtonPress(".arrow-key-up", this.virtualKeyUp);
+  this.bindButtonPress(".arrow-key-down", this.virtualKeyDown);
+  this.bindButtonPress(".arrow-key-left", this.virtualKeyLeft);
+  this.bindButtonPress(".arrow-key-right", this.virtualKeyRight);
 
   // Respond to swipe events
   var touchStartClientX, touchStartClientY;
@@ -137,8 +141,29 @@ KeyboardInputManager.prototype.keepPlaying = function (event) {
   this.emit("keepPlaying");
 };
 
+KeyboardInputManager.prototype.virtualKeyUp = function (event) {
+  console.log(`Click Up`);
+  this.emit("move", 0);
+}
+
+KeyboardInputManager.prototype.virtualKeyDown = function (event) {
+  console.log(`Click Down`);
+  this.emit("move", 2);
+}
+
+KeyboardInputManager.prototype.virtualKeyLeft = function (event) {
+  console.log(`Click Left`);
+  this.emit("move", 3);
+}
+
+KeyboardInputManager.prototype.virtualKeyRight = function (event) {
+  console.log(`Click Right`);
+  this.emit("move", 1);
+}
+
 KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   var button = document.querySelector(selector);
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
